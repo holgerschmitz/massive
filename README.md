@@ -1,2 +1,2 @@
 # massive
-MAssively Scalable SImulation of the Vlasov Equation
+Modular And Scalable SImulation of the Vlasov Equation
