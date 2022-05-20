@@ -36,6 +36,10 @@ class Species : public schnek::Block {
 
   protected:
     void initParameters(schnek::BlockParameters &blockPars) override;
+  public:
+    virtual void advance(double dt) = 0;
 };
+
+typedef boost::shared_ptr<Species> pSpecies;
 
 #endif // MASSIVE_SPECIES_SPECIES_HPP

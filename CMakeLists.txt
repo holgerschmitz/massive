@@ -23,11 +23,13 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 add_executable(massive1x1v
     src/massive.cpp
     src/species/species.cpp
+    huerto/constants.cpp
 )
 
 add_executable(massive2x3v
     src/massive.cpp
     src/species/species.cpp
+    huerto/constants.cpp
 )
 
 target_compile_definitions(massive1x1v PRIVATE MASSIVE_1X_1V MASSIVE_ONE_V HUERTO_ONE_DIM)

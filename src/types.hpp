@@ -1,3 +1,5 @@
+#ifndef MASSIVE_TYPES_HPP_
+#define MASSIVE_TYPES_HPP_
 
 #include "../huerto/types.hpp"
 
@@ -18,3 +20,5 @@ typedef schnek::Array<double, V_DIMENSION> VVector;
 
 typedef schnek::Range<int, V_DIMENSION> VRange;
 typedef schnek::Range<double, V_DIMENSION> VDomain;
+
+#endif // MASSIVE_TYPES_HPP_
