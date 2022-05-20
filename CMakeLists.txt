@@ -19,18 +19,19 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-
 # add the executable
 add_executable(massive1x1v
     src/massive.cpp
+    src/species/species.cpp
 )
 
 add_executable(massive2x3v
     src/massive.cpp
+    src/species/species.cpp
 )
 
-target_compile_definitions(massive1x1v PRIVATE MASSIVE_1X_1V)
-target_compile_definitions(massive2x3v PRIVATE MASSIVE_2X_3V)
+target_compile_definitions(massive1x1v PRIVATE MASSIVE_1X_1V MASSIVE_ONE_V HUERTO_ONE_DIM)
+target_compile_definitions(massive2x3v PRIVATE MASSIVE_2X_3V MASSIVE_THREE_V HUERTO_TWO_DIM)
 
 function(setoptions target)
     target_include_directories(${target} PUBLIC ${MPI_INCLUDE_PATH})
@@ -38,6 +39,7 @@ function(setoptions target)
 
     target_link_libraries(${target} ${MPI_C_LIBRARIES})
     target_link_libraries(${target} ${HDF5_LIBRARIES})
+    target_link_libraries(${target} /usr/local/lib/libschnek.so)
 endfunction()
 
 setoptions(massive1x1v)
