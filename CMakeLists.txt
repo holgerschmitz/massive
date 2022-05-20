@@ -7,12 +7,22 @@ cmake_policy(SET CMP0076 NEW)
 
 find_package(MPI REQUIRED)
 find_package(HDF5 REQUIRED)
+find_package(Boost REQUIRED)
 
-include_directories(SYSTEM ${MPI_INCLUDE_PATH})
-include_directories(SYSTEM ${HDF5_INCLUDE_DIRS})
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 
 # add the executable
 add_executable(massive)
+
+target_include_directories(massive PUBLIC ${MPI_INCLUDE_PATH})
+target_include_directories(massive PUBLIC ${HDF5_INCLUDE_DIRS})
 
 target_link_libraries(massive ${MPI_C_LIBRARIES})
 target_link_libraries(massive ${HDF5_LIBRARIES})
