@@ -4,6 +4,7 @@
 #include <schnek/variables.hpp>
 
 #include "../types.hpp"
+#include "../../huerto/simulation/simulation_context.hpp"
 
 /** 
  * @brief Base class for a particle species
@@ -12,7 +13,9 @@
  * setup file. It needs to be extended to store the distribution functions \f$f\f$ 
  * and implement the algorithm to advance \f$f\f$.
  */
-class Species : public schnek::Block {
+class Species : public schnek::ChildBlock<HydroSolver>,
+                public SimulationEntity 
+{
   protected:
     /**
      * @brief single particle charge
